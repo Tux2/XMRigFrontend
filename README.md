@@ -13,7 +13,7 @@ You can test it at the [Live Demo](http://github.umine.me/index.html) on GitHub 
 ## Installation
 ##### GitHub Pages Version
 If you don't have a WebServer you can simply use the Version on [GitHub Pages](http://github.umine.me/index.html).
-All requests to the miner are made directly from your Device. If you use the GitHub Pages Version there is no need too Setup a Server! If you use Chrome and your Miner has no HTTPS, you need click on the Shield in the Addressbar and Allow "Unsafe Scripts". 
+All requests to the miner are made directly from your Device. If you use the GitHub Pages Version there is no need too Setup a Server! 
 
 ##### SelfHosted
 If you like to host this page yourself, simply drag and drop the 3 Files to your WebServer. All dependencies are loaded from cdn.js to make the installation as simple as possible. But if you want to, you can replace them easily!

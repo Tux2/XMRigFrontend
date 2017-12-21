@@ -1,18 +1,18 @@
 # XMRigFrontend
 This is a Simple Frontend for the XMRig Monero Miners.
 It shows all the important informations (Hashrate, Last Connection loss...) and has a simple, responsive Design.
-You can test it at the [Live Demo](https://dunklestoast.github.io/XMRigFrontend/index.html) on GitHub Pages!
+You can test it at the [Live Demo](https://tux2.github.io/XMRigFrontend/index.html) on GitHub Pages!
 
 ## Features
 - Easy Install
 - No Server needed
 - configurable
-- Supports [XMRig CPU Miner](https://github.com/xmrig/xmrig)
+- Supports [XMRig CPU Miner](https://github.com/xmrig/xmrig), [XMR-Stak](https://github.com/fireice-uk/xmr-stak), and [XMRig-Proxy](https://github.com/xmrig/xmrig-proxy)
 
 
 ## Installation
 ##### GitHub Pages Version
-If you don't have a WebServer you can simply use the Version on [GitHub Pages](https://dunklestoast.github.io/XMRigFrontend/index.html).
+If you don't have a WebServer you can simply use the Version on [GitHub Pages](https://tux2.github.io/XMRigFrontend/index.html).
 All requests to the miner are made directly from your Device. If you use the GitHub Pages Version there is no need too Setup a Server! If you use Chrome and your Miner has no HTTPS, you need click on the Shield in the Addressbar and Allow "Unsafe Scripts". 
 
 ##### SelfHosted

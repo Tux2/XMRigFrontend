@@ -52,7 +52,7 @@ xmrig.controller('MainController', function ($scope, $http, $mdDialog, $mdSidena
             }
         } catch (e) {
             console.error(e);
-            $mdDialog.show($mdDialog.alert().clickOutsideToClose(true).title('Error').textContent('We could not reach the Miner and encountered an Error: ' + e.message + '. Sleeping 60s').ok('Damn!'));
+            $mdDialog.show($mdDialog.alert().clickOutsideToClose(true).title('Error').textContent('We could not reach the Miner and encountered an Error: ' + e.message + '. Sleeping 60s').ok('Bummer!'));
         }
     }
 

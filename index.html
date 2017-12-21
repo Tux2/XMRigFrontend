@@ -57,8 +57,10 @@
 
     <div layout="column" layout-align="center center">
         <div ng-if="rigs.length !== 0">
-            <md-card>
-                <md-card-header>
+          <md-card>
+            <div layout="row" layout-align="center center">
+              <md-card>
+                <md-card-header style="margin-top: -30px">
                     <md-card-header-text>
                         <p class="md-title" style="font-size: 25px">{{res.worker_id}}</p>
                         <p class="md-subhead" style="margin-top: -15px">{{res.ua}}</p>
@@ -69,18 +71,26 @@
                         </div>
                     </md-card-header-text>
                 </md-card-header>
-                <md-divider></md-divider>
-                <md-card-content style="margin-top: 0">
+                 <md-card-content style="margin-top: -40px">
                     <div ng-if="type !== 'proxy'">
                         <h2 style="font-size: 20px">System:</h2>
                         <p>CPU: {{res.cpu.brand}}</p>
                         <p ng-if="res.cpu.aes">Supports AES</p>
                         <p>{{res.cpu.x64 ? "64" : "32"}}bit System with {{res.hugepages ? "enabled" : "disabled"}} hugepages and {{res.cpu.sockets}} Socket(s)</p>
-                        <md-divider></md-divider>
                     </div>
+                </md-card-content>
+            </md-card>
+            </div>
+            <div layout="row" layout-align="center center">
+            <md-card>
+                 <md-card-header style="margin-top: -20px">
+                    <md-card-header-text>
                     <h2 style="font-size: 20px">Hashing:</h2>
                     <p class="head">Donation: {{res.donate_level}} from 100 Minutes</p>
-                    <p>Highest Hashrate since start: {{res.hashrate.highest}} H/s</p>
+                    </md-card-header-text>
+                 </md-card-header>
+                 <md-card-content style="margin-top: -40px">
+                    <p ng-if="type !== 'proxy'">Highest Hashrate since start: {{res.hashrate.highest}} H/s</p>
                     <p ng-if="type !== 'proxy'">Donated: {{res.donated}}</p>
                     <p>Total Hashrate: </p>
                     <table style="border-collapse: collapse; width: 100%">
@@ -94,13 +104,28 @@
                             <th ng-if="type === 'proxy'">24hr</th>
                         </tr>
                         <tr>
-                            <td>{{res.hashrate.total[0]}}</td>
-                            <td>{{res.hashrate.total[1]}}</td>
-                            <td>{{res.hashrate.total[2]}}</td>
-                            <td ng-if="type === 'proxy'">{{res.hashrate.total[3]}}</td>
-                            <td ng-if="type === 'proxy'">{{res.hashrate.total[4]}}</td>
+                            <td>{{res.hashrate.total[0]}} kH/s</td>
+                            <td>{{res.hashrate.total[1]}} kH/s</td>
+                            <td>{{res.hashrate.total[2]}} kH/s</td>
+                            <td ng-if="type === 'proxy'">{{res.hashrate.total[3]}} kH/s</td>
+                            <td ng-if="type === 'proxy'">{{res.hashrate.total[4]}} kH/s</td>
                         </tr>
                     </table>
+                    <md-card ng-if="type === 'proxy'">
+                       <md-card-header style="margin-top: -30px">
+                          <md-card-header-text>
+                             <h2>Miners</h2>
+                          </md-card-header-text>
+                       </md-card-header>
+                    <md-card-content style="margin-top: -40px">
+                       <p>Current: {{res.miners.now}}</p>
+                       <p>Maximum: {{res.miners.max}}</p>
+                   </md-card-content>
+                </md-card>
+               </md-card-content>
+            </md-card>
+            <md-card>
+                 <md-card-content style="margin-top: -10px;">
                     <div ng-if="type !== 'proxy'">
                         <p>Per Thread Hashrate: </p>
                         <table style="border-collapse: collapse; width: 100%">
@@ -119,13 +144,6 @@
                         </table>
                     </div>
                     <div ng-if="type === 'proxy'">
-                        <md-divider></md-divider>
-                        <h2>Miners</h2>
-                        <p>Current: {{res.miners.now}}</p>
-                        <p>Maximum: {{res.miners.max}}</p>
-                    </div>
-                    <md-divider style="margin-top: 5px"></md-divider>
-                    <div ng-if="type === 'proxy'">
                         <h2 style="font-size: 20px">Results:</h2>
                         <p class="head">Upstreams: {{res.upstreams}}</p>
                         <p>Accepted/Rejected: {{res.results.accepted}}/{{res.results.rejected}}</p>
@@ -135,22 +153,48 @@
                         <p>Latency: {{res.results.latency}}ms</p>
                         <p>Total Hashes: {{res.results.hashes_total}} Hashes</p>
                         <p>Donated Hashes: {{res.results.hashes_donate}} Hashes</p>
-                        <md-divider></md-divider>
-                        <h2>Workers</h2>
-                        <span ng-repeat="worker in workers track by $index">
-                            <h2>{{worker[0]}}</h2>
-                            <p class="head">{{worker[1]}}</p>
-                            <p>Connections: {{worker[2]}}</p>
-                            <p>Accepted: {{worker[3]}}</p>
-                            <p>Rejected: {{worker[4]}}</p>
-                            <p>Invalid: {{worker[5]}}</p>
-                            <p>Total Hashes: {{worker[6]}}</p>
-                            <p>Last Hash Submitted: {{worker[7]}}</p>
-                        <md-divider></md-divider>
-                        </span>
                     </div>
-                    <div ng-if="type !== 'proxy'">
+                </md-card-content>
+            </md-card>
+            </div>
+            <md-card>
+                 <div ng-if="type === 'proxy'">
+                 <md-card-header style="margin-top: -30px">
+                    <md-card-header-text>
+                        <h2>Workers</h2>
+                    </md-card-header-text>
+                 </md-card-header>
+                 <md-card-content style="margin-top: -40px">
+                        <table style="border-collapse: collapse; width: 100%">
+                            <tr>
+                                <th>Worker</th>
+                                <th>IP</th>
+                                <th>Connections</th>
+                                <th>Accepted</th>
+                                <th>Rejected</th>
+                                <th>Invalid</th>
+                                <th>Total Hashes</th>
+                                <th>Last Hash Submitted</th>
+                            </tr>
+                            <tr ng-repeat="worker in workers track by $index">
+                                <td>{{worker[0]}}</td>
+                                <td>{{worker[1]}}</td>
+                                <td>{{worker[2]}}</td>
+                                <td>{{worker[3]}}</td>
+                                <td>{{worker[4]}}</td>
+                                <td>{{worker[5]}}</td>
+                                <td>{{worker[6]}}</td>
+                                <td>{{worker[7]}}</td>
+                            </tr>
+                        </table>
+                 </div>
+                 <div ng-if="type !== 'proxy'">
+                 <md-card-header style="margin-top: -30px">
+                    <md-card-header-text>
                         <h2 style="font-size: 20px">Results:</h2>
+                    </md-card-header-text>
+                 </md-card-header>
+                 <md-card-content style="margin-top: -40px">
                         <p class="head">Current Difficulty is {{res.results.diff_current}}</p>
                         <p>Average Time: {{res.results.avg_time}}</p>
                         <p>Total Hashes: {{res.results.hashes_total}}</p>
@@ -167,6 +211,7 @@
                     <!-- Error Log -->
                 </md-card-content>
             </md-card>
+          </md-card?
         </div>
 
         <div ng-if="rigs.length === 0">
@@ -187,8 +232,8 @@
         </div>
 
         <div style="text-align: center; margin-bottom: 15px;">
-            <p>XMRig Stats v0.4</p>
-            <p style="margin-top: -10px">by dunklesToast</p>
+            <p>XMRig Stats v0.4.1</p>
+            <p style="margin-top: -10px">by dunklesToast, <br>edited by Tux2</p>
         </div>
     </div>
 </div>
